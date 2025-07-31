@@ -5,9 +5,12 @@ interface SidebarFiltersProps {
   loading: boolean;
 }
 
-export default function SidebarFilters({ flights, loading }: SidebarFiltersProps) {
+export default function SidebarFilters({
+  flights,
+  loading,
+}: SidebarFiltersProps) {
   return (
-    <div className="w-80 bg-white shadow-lg p-6 h-screen sticky top-0 overflow-y-auto">
+    <div className="w-80 bg-white shadow-lg p-6 h-screen sticky top-0 overflow-y-auto hidden lg:block">
       {/* Header */}
       <div className="mb-6">
         <h2
@@ -38,7 +41,7 @@ export default function SidebarFilters({ flights, loading }: SidebarFiltersProps
             { value: "duration", label: "Duration (Short to Long)" },
             { value: "departure", label: "Departure Time" },
             { value: "arrival", label: "Arrival Time" },
-            { value: "airline", label: "Airline" }
+            { value: "airline", label: "Airline" },
           ].map((option) => (
             <label key={option.value} className="flex items-center">
               <input
@@ -95,9 +98,12 @@ export default function SidebarFilters({ flights, loading }: SidebarFiltersProps
             { value: "all", label: "Any number of stops" },
             { value: "nonstop", label: "Non-stop only" },
             { value: "1stop", label: "1 stop or fewer" },
-            { value: "2stops", label: "2 stops or fewer" }
+            { value: "2stops", label: "2 stops or fewer" },
           ].map((option) => (
-            <label key={option.value} className="flex items-center justify-between">
+            <label
+              key={option.value}
+              className="flex items-center justify-between"
+            >
               <div className="flex items-center">
                 <input
                   type="radio"
@@ -113,9 +119,7 @@ export default function SidebarFilters({ flights, loading }: SidebarFiltersProps
                   {option.label}
                 </span>
               </div>
-              <span className="text-xs text-gray-500">
-                {flights.length}
-              </span>
+              <span className="text-xs text-gray-500">{flights.length}</span>
             </label>
           ))}
         </div>
@@ -130,25 +134,30 @@ export default function SidebarFilters({ flights, loading }: SidebarFiltersProps
           Airlines
         </h3>
         <div className="space-y-2">
-          {["Lufthansa", "United", "Emirates", "Qatar Airways"].map((airline) => (
-            <label key={airline} className="flex items-center justify-between">
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  className="mr-2 w-4 h-4 text-slate-600 border-gray-300 rounded focus:ring-slate-500"
-                />
-                <span
-                  className="text-sm text-gray-700"
-                  style={{ fontFamily: "var(--font-light)" }}
-                >
-                  {airline}
+          {["Lufthansa", "United", "Emirates", "Qatar Airways"].map(
+            (airline) => (
+              <label
+                key={airline}
+                className="flex items-center justify-between"
+              >
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    className="mr-2 w-4 h-4 text-slate-600 border-gray-300 rounded focus:ring-slate-500"
+                  />
+                  <span
+                    className="text-sm text-gray-700"
+                    style={{ fontFamily: "var(--font-light)" }}
+                  >
+                    {airline}
+                  </span>
+                </div>
+                <span className="text-xs text-gray-500">
+                  {Math.floor(flights.length / 4)}
                 </span>
-              </div>
-              <span className="text-xs text-gray-500">
-                {Math.floor(flights.length / 4)}
-              </span>
-            </label>
-          ))}
+              </label>
+            )
+          )}
         </div>
       </div>
 
@@ -166,9 +175,12 @@ export default function SidebarFilters({ flights, loading }: SidebarFiltersProps
             { value: "morning", label: "Morning (5AM - 12PM)" },
             { value: "afternoon", label: "Afternoon (12PM - 6PM)" },
             { value: "evening", label: "Evening (6PM - 12AM)" },
-            { value: "night", label: "Night (12AM - 5AM)" }
+            { value: "night", label: "Night (12AM - 5AM)" },
           ].map((option) => (
-            <label key={option.value} className="flex items-center justify-between">
+            <label
+              key={option.value}
+              className="flex items-center justify-between"
+            >
               <div className="flex items-center">
                 <input
                   type="radio"
